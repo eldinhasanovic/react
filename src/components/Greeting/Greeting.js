@@ -6,7 +6,7 @@ function Greeting(props) {
     <main className="main">
       <h2>Dobrodosli u {props.appName}</h2>
       <h3>
-        Hvala na posetiy
+        Hvala na poseti <blank></blank>
         {props.username}
       </h3>
     </main>

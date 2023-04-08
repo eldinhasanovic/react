@@ -1,4 +1,9 @@
-/* .header {
+.header {
+  height: 15vh;
+  background-color: rgb(36, 51, 91);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   background-color: #282c34;
   min-height: 9vh;
   display: flex;
@@ -7,4 +12,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-} */
+}
