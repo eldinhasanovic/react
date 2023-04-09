@@ -1,72 +1,16 @@
 import React from "react";
+import { useState } from "react";
 import "./App.css";
 import Greeting from "./components/Greeting/Greeting";
 import { Navbar } from "./components/Navbar/Navbar";
 import PersonCard from "./components/Cards/PersonCard/PersonCard";
 import HotelCard from "./components/Cards/HotelCard/HotelCard";
-// const persons = [
-//   {
-//     imgURL: "https://avatars.githubusercontent.com/u/89378479?v=4",
-//     fullName: "Dzenan Kosuta",
-//     description: "Dzenan is rising Web developer...",
-//     location: "Novi pazar, Serbia",
-//     goToGit: "https://github.com/dzenankosuta?tab=repositories",
-//   },
-//   {
-//     imgURL: "https://avatars.githubusercontent.com/u/111905831?v=4",
-//     fullName: "Alen Muslic",
-//     description: "Alen is rising Web developer...",
-//     location: "Novi pazar, Serbia",
-//     goToGit: "https://github.com/alenmuslic?tab=repositories",
-//   },
-//   {
-//     imgURL:
-//       "https://www.borisradivojkov.com/assets/images/profesionalni-poslovni-portret-rukovodioca-600x600.jpg",
-//     fullName: "Aladin Zecic",
-//     description: "Aladin is rising Web developer...",
-//     location: "Novi pazar, Serbia",
-//     goToGit: "https://github.com/aladinzecic?tab=repositories",
-//   },
-//   {
-//     imgURL: "https://avatars.githubusercontent.com/u/111905979?v=4",
-//     fullName: "Haris Muslic",
-//     description: "Haris is rising Web developer...",
-//     location: "Novi pazar, Serbia",
-//     goToGit: "https://github.com/harismuslic04?tab=repositories",
-//   },
-// ];
-const hoteli = [
-  {
-    imgHotel:
-      "https://images.trvl-media.com/lodging/1000000/50000/41100/41081/18cfc8a0.jpg?impolicy=resizecrop&rw=1200&ra=fit",
-    imeHotela: "The STRAT Hotel, Casino & SkyPo",
-    zvezdice: 4,
-    udaljenost: 1.75,
-    rating: "6.2/10",
-    brocena: 11818,
-  },
-  {
-    imgHotel:
-      "https://images.trvl-media.com/lodging/1000000/20000/16000/15930/64fa82f5.jpg?impolicy=resizecrop&rw=1200&ra=fit",
-    imeHotela: "Treasure Island – TI Las Vegas Hotel Casino, a Radisson Hotel",
-    zvezdice: 4,
-    udaljenost: 3.57,
-    rating: "8/10",
-    brocena: 17685,
-  },
-  {
-    imgHotel:
-      "https://images.trvl-media.com/lodging/1000000/10000/1500/1443/c10675a3.jpg?impolicy=resizecrop&rw=1200&ra=fit",
-    imeHotela: "The Venetian Resort Las Vegas",
-    zvezdice: 5,
-    udaljenost: 3.69,
-    rating: "8.8/10",
-    brocena: 16446,
-  },
-];
+import hoteli from "./common/hotels.json";
+import persons from "./common/people.json";
+
 function App() {
-  const [count, setCount] = React.useState(0);
-  // const [count, setCount] = useState(0);
+  // const [count, setCount] = React.useState(0);
+  const [count, setCount] = useState(0);
   // setCount je metoda pomocu koje menjamo vrednost count state_a:
   const increaseCount = () => {
     setCount(count + 1);
@@ -74,6 +18,7 @@ function App() {
   const decreaseCount = () => {
     setCount(count - 1);
   };
+  const [name, setName] = useState("");
   return (
     //  React.createElement("p", {}, "Neki paragraf");
     <>
@@ -172,15 +117,55 @@ function App() {
               <HotelCard
                 imgHotel={hotel.imgHotel}
                 imeHotela={hotel.imeHotela}
-                location={hotel.location}
+                zvezdice={hotel.zvezdice}
                 udaljenost={hotel.udaljenost}
                 rating={hotel.rating}
                 brocena={hotel.brocena}
               />
             ))}
           </div>
-          <div className="kartice"></div>
         </div>
+        <form onSubmit={() => {}}>
+          <label htmlFor="Ime">Unesite vase ime</label>
+          <input
+            id="Ime"
+            type="text"
+            value="ime"
+            // onChange={() => {
+            //   setName(event.target.value);
+            // }}
+          />
+          <br />
+          <label htmlFor="Prezime">Unesite vase Prezime</label>
+          <input
+            id="Prezime"
+            type="text"
+            value="ime"
+            // onChange={() => {
+            //   setName(event.target.value);
+            // }}
+          />
+          <br />
+          <label htmlFor="Email">Unesite vas email</label>
+          <input
+            id="Email"
+            type="email"
+            value="ime"
+            // onChange={() => {
+            //   setName(event.target.value);
+            // }}
+          />
+          <br />
+          <label htmlFor="BrojTel">Unesite vas broj telefona</label>
+          <input
+            id="BrojTel"
+            type="tel"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            value="ime"
+          />
+          <br />
+          <button type="submit"></button>
+        </form>
       </div>
     </>
   );

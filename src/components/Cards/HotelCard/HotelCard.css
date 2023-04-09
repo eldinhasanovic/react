@@ -9,8 +9,11 @@ img {
 .z-index {
   z-index: 1;
   width: 23.8%;
-  height: 10vh;
+  height: 15vh;
   position: absolute;
   top: 383px;
   background-color: wheat;
+}
+h1,
+h2 {
 }

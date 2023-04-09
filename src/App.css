@@ -12,11 +12,26 @@
   padding: 20px;
   width: 80%;
   margin: 0 auto;
-  height: 45vh;
+  height: 50vh;
   background-color: wheat;
+  padding-top: 10px;
 }
 .karticecontainer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+form {
+  width: 70%;
+  margin: auto;
+}
+label {
+  margin: 20px;
+}
+input {
+  margin: 5px;
+}
+button {
+  width: 50px;
+  height: 20px;
 }

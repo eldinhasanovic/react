@@ -1,0 +1,26 @@
+[
+  {
+    "imgHotel": "https://images.trvl-media.com/lodging/1000000/50000/41100/41081/18cfc8a0.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+    "imeHotela": "The STRAT Hotel, Casino & SkyPo",
+    "zvezdice": 4,
+    "udaljenost": 1.75,
+    "rating": 6.2,
+    "brocena": 11818
+  },
+  {
+    "imgHotel": "https://images.trvl-media.com/lodging/1000000/20000/16000/15930/64fa82f5.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+    "imeHotela": "Treasure Island – TI Las Vegas Hotel Casino, a Radisson Hotel",
+    "zvezdice": 4,
+    "udaljenost": 3.57,
+    "rating": 8,
+    "brocena": 17685
+  },
+  {
+    "imgHotel": "https://images.trvl-media.com/lodging/1000000/10000/1500/1443/c10675a3.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+    "imeHotela": "The Venetian Resort Las Vegas",
+    "zvezdice": 5,
+    "udaljenost": 3.69,
+    "rating": 8.8,
+    "brocena": 16446
+  }
+]
