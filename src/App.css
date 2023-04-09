@@ -8,3 +8,15 @@
   font-size: calc(10px + 2vmin);
   color: white;
 } */
+.hotel {
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+  height: 45vh;
+  background-color: wheat;
+}
+.karticecontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

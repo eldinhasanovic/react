@@ -6,13 +6,13 @@ export default function PersonCard(props) {
   return (
     <div className="card">
       <div className="firstPart">
-        <img src={props.ImgURL} alt={"profile_img"} className="img" />
-        <h1>{props.FullName}</h1>
-        <h3>{props.Location}</h3>
+        <img src={props.imgURL} alt={"profile_img"} className="img" />
+        <h1>{props.fullName}</h1>
+        <h3>{props.location}</h3>
       </div>
       <div className="secondPart">
-        <p>Eldin is a student, and he is studying programming in centar Nit</p>
-        <a href={props.gotoGit} target="blank" style={{ color: "darkblue" }}>
+        <p>{props.description}</p>
+        <a href={props.goToGit} target="blank" style={{ color: "darkblue" }}>
           <FaGithub style={{ width: "50px", height: "50px" }} />
         </a>
       </div>

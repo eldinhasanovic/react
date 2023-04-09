@@ -1,0 +1,16 @@
+.kartica {
+  width: 40vh;
+  height: 30vh;
+}
+
+img {
+  width: 100%;
+}
+.z-index {
+  z-index: 1;
+  width: 23.8%;
+  height: 10vh;
+  position: absolute;
+  top: 383px;
+  background-color: wheat;
+}
