@@ -4,7 +4,7 @@ import "./Navbar.css";
 function Navbar(props) {
   return (
     <header className="header">
-      <h1 style={{ color: "#ffffff", fontFamily: "Arial" }}>Logo</h1>
+      <h1 style={{ color: "#ffffff", fontFamily: "Arial" }}>REACT</h1>
       {/* {props.children} */}
     </header>
   );

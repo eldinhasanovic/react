@@ -25,7 +25,7 @@ function App() {
       {" "}
       {/* Fragment - najcesce se koristi za wrappovanje */}
       <div className="App">
-        <Navbar>{/* <p>Samo za primer</p> */}</Navbar>
+        <Navbar />
         {/* <Greeting appName={"Our First App"} username={"Eldin Hasanovic"} /> */}
         <div
           style={{
@@ -38,54 +38,6 @@ function App() {
             // marginRight: "20px",
           }}
         >
-          {/* <PersonCard
-            ImgURL={"https://avatars.githubusercontent.com/u/86130682?v=4"}
-            FullName={"Eldin Hasanovic"}
-            Location={"Novi Pazar"}
-            gotoGit={"https://github.com/eldinhasanovic?tab=repositories"}
-          />
-          <PersonCard
-            ImgURL={"https://avatars.githubusercontent.com/u/86130682?v=4"}
-            FullName={"Eldin Hasanovic"}
-            Location={"Novi Pazar"}
-            gotoGit={"https://github.com/eldinhasanovic?tab=repositories"}
-          />
-          <PersonCard
-            ImgURL={"https://avatars.githubusercontent.com/u/86130682?v=4"}
-            FullName={"Eldin Hasanovic"}
-            Location={"Novi Pazar"}
-            gotoGit={"https://github.com/eldinhasanovic?tab=repositories"}
-          />
-          <PersonCard
-            ImgURL={"https://avatars.githubusercontent.com/u/86130682?v=4"}
-            FullName={"Eldin Hasanovic"}
-            Location={"Novi Pazar"}
-            gotoGit={"https://github.com/eldinhasanovic?tab=repositories"}
-          />
-          <PersonCard
-            ImgURL={"https://avatars.githubusercontent.com/u/86130682?v=4"}
-            FullName={"Eldin Hasanovic"}
-            Location={"Novi Pazar"}
-            gotoGit={"https://github.com/eldinhasanovic?tab=repositories"}
-          />
-          <PersonCard
-            ImgURL={"https://avatars.githubusercontent.com/u/86130682?v=4"}
-            FullName={"Eldin Hasanovic"}
-            Location={"Novi Pazar"}
-            gotoGit={"https://github.com/eldinhasanovic?tab=repositories"}
-          />
-          <PersonCard
-            ImgURL={"https://avatars.githubusercontent.com/u/86130682?v=4"}
-            FullName={"Eldin Hasanovic"}
-            Location={"Novi Pazar"}
-            gotoGit={"https://github.com/eldinhasanovic?tab=repositories"}
-          />
-          <PersonCard
-            ImgURL={"https://avatars.githubusercontent.com/u/86130682?v=4"}
-            FullName={"Eldin Hasanovic"}
-            Location={"Novi Pazar"}
-            gotoGit={"https://github.com/eldinhasanovic?tab=repositories"}
-          /> */}
           {/* {persons.map((person) => (
             <PersonCard
               imgURL={person.imgURL}
@@ -109,7 +61,7 @@ function App() {
         >
           +
         </button> */}
-        <div className="hotel">
+        {/* <div className="hotel">
           <h1>Where to stay in United States of America</h1>
           <h2>Top hotels in Las Vegas</h2>
           <div className="karticecontainer">
@@ -124,13 +76,23 @@ function App() {
               />
             ))}
           </div>
-        </div>
-        <form onSubmit={() => {}}>
+        </div> */}
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
           <label htmlFor="Ime">Unesite vase ime</label>
           <input
             id="Ime"
             type="text"
-            value="ime"
+            // innerText={"ime"}
+            value={"ime"}
+            onChange={(event) => {
+              console.log(event);
+              setName(event.target.value);
+            }}
+
             // onChange={() => {
             //   setName(event.target.value);
             // }}
@@ -140,7 +102,9 @@ function App() {
           <input
             id="Prezime"
             type="text"
-            value="ime"
+            value={"ime"}
+            onChange={() => {}}
+
             // onChange={() => {
             //   setName(event.target.value);
             // }}
@@ -150,7 +114,9 @@ function App() {
           <input
             id="Email"
             type="email"
-            value="ime"
+            value={"ime"}
+            onChange={() => {}}
+
             // onChange={() => {
             //   setName(event.target.value);
             // }}
@@ -160,8 +126,9 @@ function App() {
           <input
             id="BrojTel"
             type="tel"
-            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-            value="ime"
+            // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            value={"ime"}
+            onChange={() => {}}
           />
           <br />
           <button type="submit"></button>
