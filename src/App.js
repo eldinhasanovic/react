@@ -1,24 +1,41 @@
 import React from "react";
 import { useState } from "react";
 import "./App.css";
-import Greeting from "./components/Greeting/Greeting";
+// import Greeting from "./components/Greeting/Greeting";
 import { Navbar } from "./components/Navbar/Navbar";
-import PersonCard from "./components/Cards/PersonCard/PersonCard";
-import HotelCard from "./components/Cards/HotelCard/HotelCard";
-import hoteli from "./common/hotels.json";
-import persons from "./common/people.json";
+// import PersonCard from "./components/Cards/PersonCard/PersonCard";
+// import HotelCard from "./components/Cards/HotelCard/HotelCard";
+// import hoteli from "./common/hotels.json";
+// import persons from "./common/people.json";
+import Form from "./components/Form/Form";
+import teams from "./common/teams.json";
+import TeamCard from "./components/Cards/TeamCard/TeamCard";
+
+const poruke = [
+  "Danas je subota",
+  "Sutra ce biti nedelja",
+  "Danas pada kisa",
+  "Nedelja je neradan dan",
+];
 
 function App() {
-  // const [count, setCount] = React.useState(0);
-  const [count, setCount] = useState(0);
-  // setCount je metoda pomocu koje menjamo vrednost count state_a:
-  const increaseCount = () => {
-    setCount(count + 1);
-  };
-  const decreaseCount = () => {
-    setCount(count - 1);
-  };
-  const [name, setName] = useState("");
+  // // const [count, setCount] = React.useState(0);
+  // const [count, setCount] = useState(0);
+  // // setCount je metoda pomocu koje menjamo vrednost count state_a:
+  // const increaseCount = () => {
+  //   setCount(count + 1);
+  // };
+  // const decreaseCount = () => {
+  //   setCount(count - 1);
+  // };
+
+  // const [arr, setArr] = useState(poruke);
+  // const reverseArr = () => {
+  //   const _arr = [...arr];
+  //   const reversed = _arr.reverse();
+  //   setArr(reversed);
+  // };
+
   return (
     //  React.createElement("p", {}, "Neki paragraf");
     <>
@@ -26,7 +43,7 @@ function App() {
       {/* Fragment - najcesce se koristi za wrappovanje */}
       <div className="App">
         <Navbar />
-        {/* <Greeting appName={"Our First App"} username={"Eldin Hasanovic"} /> */}
+        {/* <Greeting appName={"Our First App"} username={"Eldin Hasanovic"} />
         <div
           style={{
             width: "100%",
@@ -38,16 +55,17 @@ function App() {
             // marginRight: "20px",
           }}
         >
-          {/* {persons.map((person) => (
+          {persons.map((person) => (
             <PersonCard
+              key={person.id}
               imgURL={person.imgURL}
               fullName={person.fullName}
               location={person.location}
               description={person.description}
               goToGit={person.goToRepositories}
             />
-          ))} */}
-        </div>
+          ))}{" "}
+        </div> */}
         {/* <button style={{ width: "40px" }} onClick={decreaseCount}>
           -
         </button>
@@ -67,6 +85,7 @@ function App() {
           <div className="karticecontainer">
             {hoteli.map((hotel) => (
               <HotelCard
+                key={hotel.id}
                 imgHotel={hotel.imgHotel}
                 imeHotela={hotel.imeHotela}
                 zvezdice={hotel.zvezdice}
@@ -77,62 +96,14 @@ function App() {
             ))}
           </div>
         </div> */}
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-          }}
-        >
-          <label htmlFor="Ime">Unesite vase ime</label>
-          <input
-            id="Ime"
-            type="text"
-            // innerText={"ime"}
-            value={"ime"}
-            onChange={(event) => {
-              console.log(event);
-              setName(event.target.value);
-            }}
-
-            // onChange={() => {
-            //   setName(event.target.value);
-            // }}
-          />
-          <br />
-          <label htmlFor="Prezime">Unesite vase Prezime</label>
-          <input
-            id="Prezime"
-            type="text"
-            value={"ime"}
-            onChange={() => {}}
-
-            // onChange={() => {
-            //   setName(event.target.value);
-            // }}
-          />
-          <br />
-          <label htmlFor="Email">Unesite vas email</label>
-          <input
-            id="Email"
-            type="email"
-            value={"ime"}
-            onChange={() => {}}
-
-            // onChange={() => {
-            //   setName(event.target.value);
-            // }}
-          />
-          <br />
-          <label htmlFor="BrojTel">Unesite vas broj telefona</label>
-          <input
-            id="BrojTel"
-            type="tel"
-            // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-            value={"ime"}
-            onChange={() => {}}
-          />
-          <br />
-          <button type="submit"></button>
-        </form>
+        <Form />
+        {/* <button onClick={reverseArr()}></button>
+        <div>
+          {arr.map((poruke) => (
+            <p>{poruke}</p>
+          ))}
+        </div> */}
+        <TeamCard />
       </div>
     </>
   );

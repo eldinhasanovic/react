@@ -1,0 +1,11 @@
+.card-container {
+  width: 80%;
+  height: 40px;
+  background-color: gray;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+.izbrisitim {
+  height: 40px;
+}
