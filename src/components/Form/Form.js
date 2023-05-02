@@ -87,3 +87,4 @@ export default function Form() {
     </form>
   );
 }
+export { Form };

@@ -1,22 +1,23 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
 // import Greeting from "./components/Greeting/Greeting";
 import { Navbar } from "./components/Navbar/Navbar";
-// import PersonCard from "./components/Cards/PersonCard/PersonCard";
-// import HotelCard from "./components/Cards/HotelCard/HotelCard";
-// import hoteli from "./common/hotels.json";
-// import persons from "./common/people.json";
-import Form from "./components/Form/Form";
-import teams from "./common/teams.json";
-import TeamCard from "./components/Cards/TeamCard/TeamCard";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Hotels from "./pages/Hotels/Hotels";
+import Teams from "./pages/Teams/Teams";
+import Quotes from "./pages/Quotes/Quotes";
+import { Form } from "./components/Form/Form";
 
-const poruke = [
-  "Danas je subota",
-  "Sutra ce biti nedelja",
-  "Danas pada kisa",
-  "Nedelja je neradan dan",
-];
+// const poruke = [
+//   "Danas je subota",
+//   "Sutra ce biti nedelja",
+//   "Danas pada kisa",
+//   "Nedelja je neradan dan",
+// ];
+
+export const BASE_URL = "https://api.quotable.io";
 
 function App() {
   // // const [count, setCount] = React.useState(0);
@@ -41,70 +42,77 @@ function App() {
     <>
       {" "}
       {/* Fragment - najcesce se koristi za wrappovanje */}
-      <div className="App">
-        <Navbar />
-        {/* <Greeting appName={"Our First App"} username={"Eldin Hasanovic"} />
+      {/* <div className="App"> */}
+      {/* <Greeting appName={"Our First App"} username={"Eldin Hasanovic"} />
         <div
-          style={{
-            width: "100%",
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 250px)",
-            gridGap: "30px",
-            gridAutoRows: "minmax(420px, auto)",
-            justifyContent: "center",
-            // marginRight: "20px",
-          }}
+        style={{
+          width: "100%",
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 250px)",
+          gridGap: "30px",
+          gridAutoRows: "minmax(420px, auto)",
+          justifyContent: "center",
+          // marginRight: "20px",
+        }}
         >
-          {persons.map((person) => (
-            <PersonCard
-              key={person.id}
-              imgURL={person.imgURL}
-              fullName={person.fullName}
-              location={person.location}
-              description={person.description}
-              goToGit={person.goToRepositories}
+        {persons.map((person) => (
+          <PersonCard
+          key={person.id}
+          imgURL={person.imgURL}
+          fullName={person.fullName}
+          location={person.location}
+          description={person.description}
+          goToGit={person.goToRepositories}
             />
           ))}{" "}
         </div> */}
-        {/* <button style={{ width: "40px" }} onClick={decreaseCount}>
+      {/* <button style={{ width: "40px" }} onClick={decreaseCount}>
           -
-        </button>
-        <p>{count}</p>
-        <button
+          </button>
+          <p>{count}</p>
+          <button
           style={{ width: "40px" }}
           onClick={() => {
             console.log("povecanje");
             setCount(count + 1);
           }}
-        >
+          >
           +
         </button> */}
-        {/* <div className="hotel">
+      {/* <div className="hotel">
           <h1>Where to stay in United States of America</h1>
           <h2>Top hotels in Las Vegas</h2>
           <div className="karticecontainer">
-            {hoteli.map((hotel) => (
-              <HotelCard
-                key={hotel.id}
-                imgHotel={hotel.imgHotel}
-                imeHotela={hotel.imeHotela}
-                zvezdice={hotel.zvezdice}
-                udaljenost={hotel.udaljenost}
-                rating={hotel.rating}
+          {hoteli.map((hotel) => (
+            <HotelCard
+            key={hotel.id}
+            imgHotel={hotel.imgHotel}
+            imeHotela={hotel.imeHotela}
+            zvezdice={hotel.zvezdice}
+            udaljenost={hotel.udaljenost}
+            rating={hotel.rating}
                 brocena={hotel.brocena}
               />
-            ))}
-          </div>
-        </div> */}
-        <Form />
-        {/* <button onClick={reverseArr()}></button>
+              ))}
+              </div>
+            </div> */}
+      {/* <Form /> */}
+      {/* <button onClick={reverseArr()}></button>
         <div>
-          {arr.map((poruke) => (
-            <p>{poruke}</p>
+        {arr.map((poruke) => (
+          <p>{poruke}</p>
           ))}
         </div> */}
-        <TeamCard />
-      </div>
+      {/* <TeamCard /> */}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Form />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/hotels" element={<Hotels />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/quotes" element={<Quotes />} />
+      </Routes>
+      {/* </div> */}
     </>
   );
 }
