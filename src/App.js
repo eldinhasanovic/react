@@ -90,7 +90,7 @@ function App() {
             imeHotela={hotel.imeHotela}
             zvezdice={hotel.zvezdice}
             udaljenost={hotel.udaljenost}
-            rating={hotel.rating}
+                rating={hotel.rating}
                 brocena={hotel.brocena}
               />
               ))}
