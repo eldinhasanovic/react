@@ -1,47 +1,66 @@
 import React from "react";
 import "./HotelCard.css";
-import { FaAd } from "react-icons/fa";
-import { FaStarHalfAlt } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
 
 export default function HotelCard(props) {
-  function stars(a) {
-    const oneStar = <span>⭐</span>;
-    const halfstar = <FaStarHalfAlt></FaStarHalfAlt>;
+  const oneStar = <span>⭐</span>;
+  const halfStar = <span style={{ color: "yellow" }}>✩</span>;
+  const stars = (num) => {
     const arr = [];
-    for (let i = 0; i < a; i++) {
+    for (let i = 1; i <= num; i++) {
       arr.push(oneStar);
     }
-    if (props.stars % 1 == 0) {
-      arr.push(halfstar);
+    if (props.stars % 1 !== 0) {
+      arr.push(halfStar);
     }
     return arr;
-  }
+  };
+
+  // 5-6 => "Decent"
+  // 6-7 => ""
+  // 7-8 => "Good"
+  // 8-9 => "Very Good"
+  // 9-10 => "Wonderful"
+
+  const slashIndex = props.rating.indexOf("/");
+  const rating = +props.rating.slice(0, slashIndex);
   let reaction;
-  const rating = +props.rating;
   if (rating >= 5 && rating < 6) {
-    reaction = "Decent!";
+    reaction = "Decent";
+  } else if (rating >= 6 && rating < 7) {
+    reaction = "";
   } else if (rating >= 7 && rating < 8) {
-    reaction = "Good!";
+    reaction = "Good";
   } else if (rating >= 8 && rating < 9) {
-    reaction = "Very Good!";
+    reaction = "Very Good";
   } else if (rating >= 9 && rating <= 10) {
-    reaction = "Wonderful!";
+    reaction = "Wonderful";
   }
-  const showRecommendation = rating >= 8 ? true : false;
+  const showRecomendation = rating >= 8 ? true : false;
+
   return (
-    <div>
-      <div className="kartica">
-        <img src={props.imgHotel} alt="slika" />
-        <div className="z-index">
-          <h3>{props.imeHotela}</h3>
-          <p>{stars(props.zvezdice)}</p>
-          <p>Las Vegas strip - {props.udaljenost}mi from city center</p>
+    <div className="hotelgrid">
+      <div className="Hotelcard">
+        <img src={props.imageURL} alt={"profile_img"} className="hotelimg" />
+        <div>
+          <p className="hotelname">{props.name}</p>
+          <h3
+            style={{
+              background:
+                rating < 7 ? "orange" : rating < 9 ? "yellow" : "green",
+            }}
+          >
+            {stars(props.stars)}
+          </h3>
+          <p className="hoteldesc">{props.description}</p>
           <p>
-            <b>{props.rating}/10</b> {reaction} ({props.brocena} reviews)
+            <span className="hotelrat"> {props.rating} </span>{" "}
+            <span style={{ color: "gray" }}>{reaction} </span>
+            <span style={{ color: "gray" }}>({props.reviews} </span>)
           </p>
-          {/* {showRecommendation && <p>Recommended</p>} */}
-          {/* {showRecommendation ? <p>Recommended</p> : <></>} */}
+          {/* 1. nacin uslovnog prikazivanja (Conditional rendering) */}
+          {/* {showRecomendation && <p>Recomendation</p>} */}
+          {/* 2. nacin uslovnog prikazivanja (Conditional rendering) */}
+          {showRecomendation ? <p>Recomendation</p> : <></>}
         </div>
       </div>
     </div>
