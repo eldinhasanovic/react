@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import HotelCard from "../../components/Cards/HotelCard/HotelCard";
 import hotels from "../../common/hotels.json";
@@ -8,7 +7,7 @@ export default function Hotel() {
   console.log(typeof id);
   console.log(hotels);
   const hotel = hotels.find((e) => {
-    return e.id == id;
+    return e.id === id;
   });
   console.log(hotel);
   return (

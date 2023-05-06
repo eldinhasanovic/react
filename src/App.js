@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.css";
 // import Greeting from "./components/Greeting/Greeting";
 import { Navbar } from "./components/Navbar/Navbar";
@@ -109,7 +109,7 @@ function App() {
       {/* <TeamCard /> */}
       <Navbar />
       <Routes>
-        <Route path="/" element={<Form />} />
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about-us" element={<AboutUs />} />
