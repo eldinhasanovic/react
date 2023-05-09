@@ -1,63 +1,83 @@
 import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
+import { BASE_URL } from "../../config/api";
+import { useNavigate } from "react-router-dom";
 export function Login() {
-  async function Login(data) {
+  const [Msg, setMsg] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [prikaz, setPrikaz] = useState(false);
+  const navigation = useNavigate();
+
+  async function loginSystem(data) {
     try {
-      const user = await axios.post(
-        "https://nit-backend.onrender.com/users/login",
-        data
-      );
+      const user = await axios.post(`${BASE_URL}/users/login`, data);
       const userInfo = await user.data;
       console.log(userInfo);
+      localStorage.setItem("token", JSON.stringify(userInfo.token));
+      setPrikaz(true);
     } catch (err) {
-      console.log(err);
+      setMsg(`Greska: ${err.response.data.err}`);
+      localStorage.removeItem("token");
     }
   }
 
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     setPrikaz(true);
+  //     // window.location.reload(false);
+  //   }
+  // }, [localStorage]);
+
   function handleClick(e) {
     e.preventDefault();
-    Login({
+    loginSystem({
       email,
       password,
     });
   }
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   return (
-    <div className="cointener">
-      <form>
-        <h1>Login</h1>
-        <label className="label">Email</label>
-        <input
-          className="input"
-          type="text"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          placeholder="Email"
-          name="username"
-          required
-        ></input>
-        <label className="label">Password</label>
-        <input
-          className="input"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          type="password "
-          name="password "
-          placeholder="Passwors"
-          required
-        ></input>
-        <button id="login" onClick={handleClick}>
-          Login
-        </button>
-        {/* <p style={{ fontSize: '2rem', color: 'black' }}> {email}</p> */}
-      </form>
-    </div>
+    <>
+      {prikaz ? (
+        navigation("/")
+      ) : (
+        // window.location.replace("localhost:3000/")
+        <div className="cointener">
+          <form>
+            <h1 id="loginHeading">Login</h1>
+            <p id="msg">{Msg}</p>
+            <label className="label">Email</label>
+            <input
+              className="input"
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              placeholder="Email"
+              name="email"
+              required
+            ></input>
+            <label className="label">Password</label>
+            <input
+              className="input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            ></input>
+            <button onClick={handleClick} id="reg">
+              Login
+            </button>
+          </form>
+        </div>
+      )}
+    </>
   );
 }

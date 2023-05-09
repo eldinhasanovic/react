@@ -1,5 +1,5 @@
-.container {
-  height: 95vh;
+.cointener {
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +8,7 @@ form {
   width: 400px;
   height: auto;
   background-color: #fff;
-  padding: 20px;
+  padding: 1rem;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   display: flex;
@@ -17,9 +17,8 @@ form {
   align-items: center;
   gap: 1rem;
 }
-form h1 {
+#loginHeading {
   text-align: center;
-  margin-bottom: 20px;
 }
 .input {
   width: 90%;
@@ -49,10 +48,9 @@ button {
   cursor: pointer;
   outline: none;
 }
-button:hover {
-  /* box-shadow: 2px 2px 10px  rgba(0,0,0,0.75); */
-  color: aqua;
-}
 button:active {
   transform: scale(0.95);
+}
+#reg:hover {
+  color: #33bd8f;
 }

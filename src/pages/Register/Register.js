@@ -1,72 +1,84 @@
 import { useState } from "react";
 import "./Register.css";
 import axios from "axios";
+import { BASE_URL } from "../../config/api";
+
 export function Register() {
-  async function Register(data) {
-    try {
-      const user = await axios.post(
-        "https://nit-backend.onrender.com/users",
-        data
-      );
-      const userInfo = await user.data;
-      console.log(userInfo);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  function handleClick(e) {
-    e.preventDefault();
-    Register({
-      name,
-      email,
-      password,
-    });
-  }
+  const [Msg, setMsg] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [prikaz, setPrikaz] = useState(false);
+
+  async function RegSystem(data) {
+    try {
+      const reg = await axios.post(`${BASE_URL}/users`, data);
+      const regInfo = await reg.data;
+      console.log(regInfo);
+      localStorage.setItem("email", data.email);
+      setPrikaz(true);
+    } catch (err) {
+      setMsg(`Greska: ${err.response.data.err}`);
+      localStorage.removeItem("email");
+    }
+  }
+
+  function handleClick(e) {
+    e.preventDefault();
+    RegSystem({ name, email, password });
+  }
+
   return (
-    <div className="rCointener">
-      <form>
-        <h1>Register</h1>
-        <label>Name</label>
-        <input
-          className="rInput"
-          type="text"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          placeholder="Name"
-          name="name"
-          required
-        ></input>
-        <label>E-mail</label>
-        <input
-          type="text"
-          className="rInput"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          placeholder="Enter E-mail"
-          name="email"
-          required
-        ></input>
-        <label>Password</label>
-        <input
-          placeholder="Enter Password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          className="rInput"
-          type="password "
-          name="password "
-          required
-        ></input>
-        <button onClick={handleClick}>Register</button>
-      </form>
-    </div>
+    <>
+      {prikaz ? (
+        <p id="uspesno">Uspesno ste se registrovali!</p>
+      ) : (
+        <div className="rCointener">
+          <form>
+            <h1>Register</h1>
+            <p id="msg">{Msg}</p>
+            <label>Username</label>
+            <input
+              className="rInput"
+              type="name"
+              placeholder="Username"
+              name="name"
+              required
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            ></input>
+            <label>E-mail</label>
+            <input
+              type="email"
+              className="rInput"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              placeholder="Enter Email"
+              name="email"
+              required
+            ></input>
+            <label>Password</label>
+            <input
+              placeholder="Enter Password"
+              className="rInput"
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            ></input>
+            <button onClick={handleClick} id="reg">
+              Register
+            </button>
+          </form>
+        </div>
+      )}
+    </>
   );
 }

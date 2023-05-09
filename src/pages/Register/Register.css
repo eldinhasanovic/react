@@ -1,5 +1,5 @@
-.rContainer {
-  height: 100vh;
+.rCointener {
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +15,16 @@ input {
   padding: 0 10px;
   outline: none;
 }
-button {
-  width: auto;
+
+#msg {
+  color: red;
+  text-shadow: 0 0 5px #252525;
+}
+
+#uspesno {
+  text-align: center;
+  margin-top: 30vh;
+  font-size: 2rem;
+  color: green;
+  text-shadow: 0 0 5px #252525;
 }
