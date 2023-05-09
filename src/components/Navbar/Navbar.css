@@ -1,10 +1,10 @@
 .header {
   height: 13vh;
-  background-color: #33bd8f;
+  background-color: #3353bd;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  box-shadow: 0 2px 5px rgb(0, 53, 20);
+  box-shadow: 0 2px 5px rgb(0, 53, 50);
 }
 
 .header h2 {

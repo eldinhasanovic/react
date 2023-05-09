@@ -3,6 +3,7 @@ import "./Login.css";
 import axios from "axios";
 import { BASE_URL } from "../../config/api";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 export function Login() {
   const [Msg, setMsg] = useState("");
   const [email, setEmail] = useState("");

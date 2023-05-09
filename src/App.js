@@ -9,7 +9,7 @@ import Hotels from "./pages/Hotels/Hotels";
 import League from "./pages/League/League";
 import Quotes from "./pages/Quotes/Quotes";
 import Footer from "./components/Footer/Footer";
-import Hotel from "./pages/Hotels/Hotel/Hotel";
+import Hotel from "./pages/Hotels/Hotels";
 import { Login } from "./pages/Login/Login";
 import { Register } from "./pages/Register/Register";
 
@@ -30,7 +30,7 @@ function App() {
         <Route path="/hotel:id" element={<Hotel />} />
         <Route path="*" element={<Error />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
