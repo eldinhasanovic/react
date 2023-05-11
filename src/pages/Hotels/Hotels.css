@@ -1,6 +1,3 @@
-.hotels {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(40%, auto);
-  justify-items: center;
+.hotelsGridMargin {
+  padding-top: 5rem;
 }
