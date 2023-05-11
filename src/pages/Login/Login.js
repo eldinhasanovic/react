@@ -6,82 +6,76 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 
 export function Login() {
-  const [Msg, setMsg] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [prikaz, setPrikaz] = useState(false);
   const navigation = useNavigate();
   const { setToken } = useContext(AppContext);
 
-  async function loginSystem(data) {
+  async function loginUser(data) {
     try {
       const user = await axios.post(`${BASE_URL}/users/login`, data);
       const userInfo = await user.data;
       console.log(userInfo);
-      localStorage.setItem("token", JSON.stringify(userInfo.token));
+      // console.log(userInfo.token);
+      localStorage.setItem("token", userInfo.token);
       setToken(userInfo.token);
-      setPrikaz(true);
+      navigation("/");
     } catch (err) {
-      setMsg(`Greska: ${err.response.data.err}`);
+      console.log(err.response.data.err);
       localStorage.removeItem("token");
       setToken(null);
     }
   }
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     setPrikaz(true);
-  //     // window.location.reload(false);
-  //   }
-  // }, [localStorage]);
-
   function handleClick(e) {
     e.preventDefault();
-    loginSystem({
+    loginUser({
       email,
       password,
     });
   }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  //   const [userInput, setUserInput] = useState({
+  //     email: "",
+  //     password:""
+  //   })
 
   return (
     <>
-      {prikaz ? (
-        navigation("/")
-      ) : (
-        <div className="cointener">
-          <form>
-            <h1 id="loginHeading">Login</h1>
-            <p id="msg">{Msg}</p>
-            <label className="label">Email</label>
-            <input
-              className="input"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              placeholder="Email"
-              name="email"
-              required
-            ></input>
-            <label className="label">Password</label>
-            <input
-              className="input"
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            ></input>
-            <button onClick={handleClick} id="reg">
-              Login
-            </button>
-          </form>
-        </div>
-      )}
+      (
+      <div className="cointener">
+        <form>
+          <h1 id="loginHeading">Login</h1>
+          {/* <p id="msg">{Msg}</p> */}
+          <label className="label">Email</label>
+          <input
+            className="input"
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            placeholder="Email"
+            name="email"
+            required
+          ></input>
+          <label className="label">Password</label>
+          <input
+            className="input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          ></input>
+          <button onClick={handleClick} id="reg">
+            Login
+          </button>
+        </form>
+      </div>
+      )
     </>
   );
 }
