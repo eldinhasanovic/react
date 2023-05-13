@@ -11,18 +11,20 @@
 
 .page-link {
   color: #333;
-  padding: 5px 10px;
+  width: 35px;
+  height: 35px;
   border: 1px solid #ccc;
   border-radius: 3px;
   text-decoration: none;
+  background-color: wheat;
 }
 
 .page-link:hover {
   background-color: #cd7878;
 }
-.page-item {
+/* .page-item {
   background-color: brown;
-}
+} */
 /* .active {
     background-color: #cd7878;
   } */
